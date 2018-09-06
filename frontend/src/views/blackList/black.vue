@@ -1,6 +1,6 @@
 <template>
   <section>
-    <mt-header style="height: 60px;font-size: 20px;z-index: 1000" title="无私奉献">
+    <mt-header style="height: 60px;font-size: 20px;z-index: 1000" title="先人指路">
       <router-link to="/home" slot="left">
         <mt-button icon="back"><i style="font-style: normal">返回</i></mt-button>
       </router-link>

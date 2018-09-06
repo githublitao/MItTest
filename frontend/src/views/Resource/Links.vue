@@ -19,8 +19,8 @@
           <mt-cell
             v-for="item in result"
             :key="item.id"
-            :title="item.CompanyName"
-            :to ='{name: "反馈详情", query:item}'
+            :title="item.remarks"
+            :to ='{name: "链接详情", query:item}'
           >
           </mt-cell>
         </div>
@@ -31,7 +31,7 @@
 
 <script>
 /* eslint-disable */
-import { getFeedList} from '../../api/api';
+import { getLinksList } from '../../api/api';
 import { Toast } from 'mint-ui';
 export default {
   name: 'blackList',
@@ -61,7 +61,7 @@ export default {
       let self = this;
       let params = { page: self.searchCondition.pageVal, name: self.value};
       let header = {};
-      getFeedList(header, params).then((res) => {
+      getLinksList(header, params).then((res) => {
         // self.listLoading = false;
         let { msg, code, data } = res;
         if (code === '999999') {
