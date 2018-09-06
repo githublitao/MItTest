@@ -1,0 +1,1 @@
+webpackJsonp([4],{oPuA:function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var r={render:function(){var e=this.$createElement;return(this._self._c||e)("div")},staticRenderFns:[]};var u=n("VU/8")({name:"Resource"},r,!1,function(e){n("xd4u")},"data-v-334d1d58",null);t.default=u.exports},xd4u:function(e,t){}});
