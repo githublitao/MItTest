@@ -7,9 +7,13 @@
     </mt-header>
     <mt-cell title="名称:" :value="this.$route.query.remarks"></mt-cell>
     <mt-cell title="密码:" :value="this.$route.query.password"></mt-cell>
-    <mt-cell title="地址:"></mt-cell>
-    <div style="margin: 10px">
-      {{this.$route.query.links}}
+    <div style="border:  1px solid #606266;
+        border-radius: 5px;
+    margin: 10px;" @click="openUrl">
+      <div style="margin: 10px">
+        <div style="font-weight: bold;">地址:</div>
+        {{this.$route.query.links?this.$route.query.links:"空"}}
+      </div>
     </div>
   </section>
 </template>
@@ -17,7 +21,14 @@
 <script>
 /* eslint-disable */
 export default {
-    name: "LinksDetails"
+    name: "LinksDetails",
+  methods:{
+      openUrl(){
+        if (this.$route.query.links) {
+          window.open(this.$route.query.links)
+        }
+      }
+  }
 }
 </script>
 

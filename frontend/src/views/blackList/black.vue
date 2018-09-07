@@ -2,9 +2,11 @@
   <section>
     <mt-header style="height: 60px;font-size: 20px;z-index: 1000" title="先人指路">
       <router-link to="/home" slot="left">
-        <mt-button icon="back"><i style="font-style: normal">返回</i></mt-button>
+        <mt-button icon="back" @click.native="closeIndicator"><i style="font-style: normal">返回</i></mt-button>
       </router-link>
-      <mt-button slot="right">添加</mt-button>
+      <router-link to="/addBlack" slot="right" style="font-size: 15px">
+        <mt-button @click.native="closeIndicator">添加</mt-button>
+      </router-link>
     </mt-header>
     <router-view></router-view>
   </section>
@@ -12,6 +14,7 @@
 
 <script>
 /* eslint-disable */
+import { Indicator } from 'mint-ui';
 export default {
   name: 'blackList',
   data () {
@@ -19,6 +22,9 @@ export default {
     }
   },
   methods: {
+    closeIndicator(){
+      Indicator.close()
+    }
   },
   mounted () {
   }

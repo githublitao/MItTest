@@ -32,7 +32,7 @@
 <script>
 /* eslint-disable */
 import { getBlackList } from '../../api/api';
-import { Toast } from 'mint-ui';
+import { Toast, Indicator  } from 'mint-ui';
 export default {
   name: 'blackList',
   data () {
@@ -61,25 +61,37 @@ export default {
       let self = this;
       let params = { page: self.searchCondition.pageVal, name: self.value};
       let header = {};
-      getBlackList(header, params).then((res) => {
-        // self.listLoading = false;
-        let { msg, code, data } = res;
-        if (code === '999999') {
-          self.total = data.total;
-          console.log(data.data);
-          data.data.forEach((item) => {
-            self.result.push(item);
-          });
-          // self.result = data.data
-        }
-        else {
-          Toast({
-            message: '查询失败',
-            position: 'bottom',
-            duration: 5000
-          });
-        }
-      })
+      Indicator.open();
+      try {
+        getBlackList(header, params).then((res) => {
+          // self.listLoading = false;
+          let {msg, code, data} = res;
+          if (code === '999999') {
+            self.total = data.total;
+            console.log(data.data);
+            data.data.forEach((item) => {
+              self.result.push(item);
+            });
+            Indicator.close()
+            // self.result = data.data
+          }
+          else {
+            Indicator.close();
+            Toast({
+              message: '查询失败',
+              position: 'bottom',
+              duration: 5000
+            });
+          }
+        })
+      } catch (e) {
+        Indicator.close();
+        Toast({
+              message: e,
+              position: 'bottom',
+              duration: 5000
+            });
+      }
     },
     //上拉加载
     loadBottom () {
@@ -96,7 +108,26 @@ export default {
     loadTop () {
       this.allLoaded = false;
       this.searchCondition.pageVal = 1;
-      this.search();
+      let self = this;
+      let params = { page: self.searchCondition.pageVal, name: self.value};
+      let header = {};
+      getBlackList(header, params).then((res) => {
+        // self.listLoading = false;
+        let { msg, code, data } = res;
+        if (code === '999999') {
+          self.total = data.total;
+          console.log(data.data);
+          self.result = data.data
+          // self.result = data.data
+        }
+        else {
+          Toast({
+            message: msg,
+            position: 'bottom',
+            duration: 5000
+          });
+        }
+      });
       this.$refs.loadmore.onTopLoaded();
     },
     handleTopChange(status) {
@@ -107,7 +138,7 @@ export default {
     },
   },
   mounted () {
-    this.search()
+    this.search();
   }
 }
 </script>

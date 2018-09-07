@@ -8,9 +8,13 @@
     <mt-cell title="名称:" :value="this.$route.query.CompanyName"></mt-cell>
     <mt-cell title="地址:" :value="this.$route.query.CompanyAddress"></mt-cell>
     <mt-cell title="时间:" :value="this.$route.query.createTime"></mt-cell>
-    <mt-cell title="内容:"></mt-cell>
-    <div style="margin: 10px">
-      {{this.$route.query.ComplainData}}
+    <div style="border:  1px solid #606266;
+        border-radius: 5px;
+    margin: 10px;">
+      <div style="margin: 10px">
+        <div style="font-weight: bold;">内容:</div>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{this.$route.query.ComplainData?this.$route.query.ComplainData:"空"}}
+      </div>
     </div>
   </section>
 </template>
