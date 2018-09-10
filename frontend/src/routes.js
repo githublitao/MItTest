@@ -2,10 +2,10 @@
 const NotFound = resolve => require(['./views/common/404.vue'], resolve);
 const About = resolve => require(['./views/about.vue'], resolve);
 const MHome = resolve => require(['./views/Home.vue'], resolve);
-const black = resolve => require(['./views/blackList/black.vue'], resolve);
-const blackList = resolve => require(['./views/blackList/blackList.vue'], resolve);
-const companyDetails = resolve => require(['./views/blackList/companyDetails.vue'], resolve);
-const addBlack = resolve => require(['./views/blackList/addBlack.vue'], resolve);
+// const black = resolve => require(['./views/blackList/black.vue'], resolve);
+// const blackList = resolve => require(['./views/blackList/blackList.vue'], resolve);
+// const companyDetails = resolve => require(['./views/blackList/companyDetails.vue'], resolve);
+// const addBlack = resolve => require(['./views/blackList/addBlack.vue'], resolve);
 const Feed = resolve => require(['./views/FeedView/Feed.vue'], resolve);
 const FeedView = resolve => require(['./views/FeedView/FeedView.vue'], resolve);
 const FeedDetails = resolve => require(['./views/FeedView/FeedDetails.vue'], resolve);
@@ -31,6 +31,7 @@ let routes = [
       projectHidden: true,
       M: true,
     },
+  /*
     {
       path: '/black',
       component: black,
@@ -54,6 +55,7 @@ let routes = [
       name: '添加公司',
       M: true,
     },
+    */
     {
       path: '/FeedView',
       component: Feed,
