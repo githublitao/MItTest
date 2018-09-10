@@ -108,7 +108,7 @@ let routes = [
       iconCls:'el-icon-info',
       name: '关于我们',
             children:[
-          { path: '/About', component: blackList, iconCls:'el-icon-bell', name: '我们'},
+          { path: '/About', component: About, iconCls:'el-icon-bell', name: '我们'},
       ]
     },
 ];
